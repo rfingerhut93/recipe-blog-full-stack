@@ -18,7 +18,7 @@ function App() {
             <Route path ="/recipes" element={<RecipeListPage/>}/>
             <Route path="/recipes/:recipeId" element={<RecipePage/>}/>
             <Route path="add-new-recipe" element={<AddNewRecipe />}/>
-            <Route path="*" element={<NotFoundPage/>}/>
+            <Route path="*" element={<NotFoundPage />}/>
           </Routes>
         </div>
       </div>

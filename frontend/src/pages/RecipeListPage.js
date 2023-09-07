@@ -1,7 +1,11 @@
+import recipes from "./recipe-content";
+import RecipesList from "../components/RecipesList";
+
 const RecipeListPage = () => {
     return (
     <>
-        <h1>This is the recipe list page.</h1>
+        <h1>Recipes:</h1>
+        <RecipesList recipes={recipes}/>
     </>
     );
 }
