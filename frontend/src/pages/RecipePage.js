@@ -1,10 +1,24 @@
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import axios from 'axios';
 import recipes from "./recipe-content";
 import NotFoundPage from "./NotFoundPage";
 
 const RecipePage = () => {
+    const [recipeInfo, setRecipeInfo] = useState();
     const { recipeId } = useParams();
-    const recipe = recipes.find(recipe => recipe.name === recipeId)
+
+    useEffect(() => {
+        const loadRecipeInfo = async () => {
+            const response = await axios.get(`/api/recipes/${recipeId}`);
+            console.log(response);
+            const newRecipeInfo = response.data;
+            setRecipeInfo(newRecipeInfo);
+        }
+        loadRecipeInfo();
+    },[]);
+
+    const recipe = recipes.find(recipe => recipe.name === recipeId);
 
     if (!recipe){
         return (<NotFoundPage />);

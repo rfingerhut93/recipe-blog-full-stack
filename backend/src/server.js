@@ -1,5 +1,6 @@
 import express from 'express';
-import { db, connectToDb } from './db.js'
+import { db, connectToDb } from './db.js';
+
 const app = express();
 app.use(express.json());
 
@@ -8,21 +9,20 @@ app.use(express.json());
 app.get('/api/recipes/:name', async (req,res) => {
     const {name} = req.params;
 
-
     const recipe = await db.collection('recipes').findOne({ name });
+
     if (recipe){
         res.json(recipe);
     } else {
-        res.sendStatus(404);
+        res.send({message: "Recipe not found??"});
     }
 })
 
 // adds new recipe
 app.post('/api/recipes', async (req, res) => {
-    console.log(req.body);
+    const {name} = req.params;
 
     const newRecipe = req.body;
-    const {name} = newRecipe.name;
 
     const existingRecipe = await db.collection('recipes').findOne({name});
 

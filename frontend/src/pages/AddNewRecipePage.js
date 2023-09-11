@@ -1,6 +1,11 @@
+import AddNewRecipeForm from '../components/AddNewRecipeForm';
+
 const AddNewRecipePage = () => {
     return (
-        <h1>add a new recipe page</h1>
+        <>
+            <h1>Add A New Recipe</h1>
+            <AddNewRecipeForm/>
+        </>
     );
 }
 
