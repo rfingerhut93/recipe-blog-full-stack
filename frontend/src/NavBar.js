@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 const NavBar = () => {
+    const navigate = useNavigate();
+
     return (
         <nav>
             <ul>
@@ -15,7 +17,9 @@ const NavBar = () => {
                 </li>
             </ul>
             <div className="nav-right">
-                <button>Log In</button> 
+                <button onClick={() => {
+                    navigate('/LogIn');
+                }}>Log In</button> 
             </div>
         </nav>
     );

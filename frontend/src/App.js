@@ -6,6 +6,8 @@ import RecipeListPage from './pages/RecipeListPage';
 import RecipePage from './pages/RecipePage';
 import AddNewRecipe from './pages/AddNewRecipePage';
 import NavBar from './NavBar';
+import CreateAccountPage from './pages/CreateAccountPage';
+import LogInPage from './pages/LogInPage';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
             <Route path ="/recipes" element={<RecipeListPage/>}/>
             <Route path="/recipes/:recipeId" element={<RecipePage/>}/>
             <Route path="add-new-recipe" element={<AddNewRecipe />}/>
+            <Route path="/login" element={<LogInPage />}/>
+            <Route path="/create-account" element={<CreateAccountPage />}/>
             <Route path="*" element={<NotFoundPage />}/>
           </Routes>
         </div>

@@ -1,13 +1,21 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import {getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 
 const SignIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
-    const logIn = () => {
+    const navigate = useNavigate();
 
+    const logIn = async () => {
+        try {
+            await signInWithEmailAndPassword(getAuth(), email, password);
+            navigate('/recipes');
+        } catch (error) {
+            setError(error.message);
+        }
     }
 
     return(
