@@ -5,7 +5,7 @@ const RecipeListPage = () => {
     return (
     <>
         <h1>Recipes:</h1>
-        <RecipesList recipes={recipes}/>
+        <RecipesList />
     </>
     );
 }

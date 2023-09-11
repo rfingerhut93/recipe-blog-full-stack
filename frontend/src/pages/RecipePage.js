@@ -11,7 +11,6 @@ const RecipePage = () => {
     useEffect(() => {
         const loadRecipeInfo = async () => {
             const response = await axios.get(`/api/recipes/${recipeId}`);
-            console.log(response);
             const newRecipeInfo = response.data;
             setRecipeInfo(newRecipeInfo);
         }

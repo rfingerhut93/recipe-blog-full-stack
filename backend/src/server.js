@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 
-// endpoint to retrieve data from MongoDB database
+// gets one recipe from MongoDB database, based on recipe name (url)
 app.get('/api/recipes/:name', async (req,res) => {
     const {name} = req.params;
 
@@ -18,7 +18,13 @@ app.get('/api/recipes/:name', async (req,res) => {
     }
 })
 
-// adds new recipe
+// gets all recipes as array from MongoDB database
+app.get('/api/recipes', async (req, res) => {
+    const recipes = await db.collection('recipes').find({}).toArray();
+    res.json(recipes);
+})
+
+// adds new recipe to MongoDB database
 app.post('/api/recipes', async (req, res) => {
     const {name} = req.params;
 
