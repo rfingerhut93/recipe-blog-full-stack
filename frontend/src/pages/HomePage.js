@@ -1,7 +1,10 @@
+import SignIn from "../components/SignIn";
+
 const HomePage = () => {
     return(
     <>
-        <h1>This is the home page.</h1>
+        <h1>Welcome!</h1>
+        <SignIn/>
     </>
     );
 }
