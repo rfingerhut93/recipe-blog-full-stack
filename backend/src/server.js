@@ -14,6 +14,21 @@ admin.initializeApp({
 const app = express();
 app.use(express.json());
 
+// middleware: load user information upon request
+app.use( async (req,res, next) => {
+    // if user is logged in, include authtoken
+    const {authtoken} = req.headers;
+
+    if (authtoken){
+        try {
+            req.user = await admin.auth().verifyIdToken(authtoken);
+        } catch (error) {
+            res.sendStatus(400);
+        }
+    }
+    next();
+});
+
 
 // gets one recipe from MongoDB database, based on recipe name (url)
 app.get('/api/recipes/:name', async (req,res) => {
@@ -34,12 +49,25 @@ app.get('/api/recipes', async (req, res) => {
     res.json(recipes);
 })
 
+// Rejects endpoint access if user is not logged in
+app.use((req, res, next) => {
+    if (req.user){
+        next();
+    } else {
+        res.sendStatus(401);
+    }
+})
+
 // adds new recipe to MongoDB database
 // ** USERS ONLY
 app.post('/api/recipes', async (req, res) => {
     const {name} = req.params;
+    const { email } = req.user;
 
-    const newRecipe = req.body;
+    const newRecipe = {
+        ...req.body,
+        email: email,
+    }
 
     const existingRecipe = await db.collection('recipes').findOne({name});
 
@@ -47,11 +75,12 @@ app.post('/api/recipes', async (req, res) => {
         return res.status(400).json({error: `Recipe with same name (${newRecipe.name}) already exists. Either update existing recipe or use a different name.`});
     } 
 
-    db.collection('recipes').insertOne(newRecipe);
+    await db.collection('recipes').insertOne(newRecipe);
     res.status(201).json({message: "Recipe added successfuly", recipe: newRecipe});
 });
 
 // updates existing recipe's ingredients by adding on.
+// ** USERS ONLY
 app.put('/api/recipes/:name/ingredients', async (req, res) => {
     const { name } = req.params;
     const ingredient = req.body;
