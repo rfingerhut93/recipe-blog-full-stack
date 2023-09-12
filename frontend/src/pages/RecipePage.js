@@ -2,15 +2,19 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from 'axios';
 import NotFoundPage from "./NotFoundPage";
+import useUser from "../hooks/useUser";
 
 const RecipePage = () => {
     const [recipeInfo, setRecipeInfo] = useState();
     const { recipeId } = useParams();
+    const {user} = useUser();
 
     useEffect(() => {
         const loadRecipeInfo = async () => {
+            const token = user && await user.getIdToken();
+            const headers = token ? {authtoken: token} : {};
             try {
-                const response = await axios.get(`/api/recipes/${recipeId}`);
+                const response = await axios.get(`/api/recipes/${recipeId}`, {headers});
                 const newRecipeInfo = response.data;
                 setRecipeInfo(newRecipeInfo);
             } catch (error) {

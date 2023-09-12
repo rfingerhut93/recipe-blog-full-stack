@@ -1,11 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
+import useUser from '../hooks/useUser';
 
 const AddNewRecipeForm = () => {
     const [recipeName, setRecipeName] = useState("");
     const [recipeTitle, setRecipeTitle] = useState("");
     const [recipeIngredients, setRecipeIngredients] = useState("");
     const [recipeDirections, setRecipeDirections] = useState("");
+    const {user, isLoading} = useUser();
 
     const addRecipe = async () => {
         try {
@@ -20,13 +22,15 @@ const AddNewRecipeForm = () => {
                     return null;
                 }
             }).filter((ingredient) => ingredient !== null);
-            
+
+            const token = user && await user.getIdToken();
+            const headers = token ? {authtoken: token} : {};
             await axios.post(`/api/recipes`, {
                 name: recipeName,
                 title: recipeTitle,
                 ingredients: ingredientArr,
                 directions: recipeDirections,
-            });
+            }, {headers});
 
             console.log("Submission successful.");
 
@@ -44,7 +48,7 @@ const AddNewRecipeForm = () => {
     return (
         
             <div id="add-recipe-form">
-                <label htmlFor="">Name</label>
+                <label htmlFor="">Name (url-friendly)</label>
                 <input type="text" name="recipeName" placeholder="Recipe name" value={recipeName} onChange={(event) => setRecipeName(event.target.value)}/>
                 <label htmlFor="">Title</label>
                 <input type="text" name="recipeTitle" placeholder="Recipe title" value={recipeTitle} onChange={(event) => setRecipeTitle(event.target.value)}/>
