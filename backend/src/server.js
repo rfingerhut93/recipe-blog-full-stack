@@ -1,5 +1,15 @@
 import express from 'express';
 import { db, connectToDb } from './db.js';
+import fs from 'fs';
+import admin from 'firebase-admin';
+
+const credentials = JSON.parse(
+    fs.readFileSync('../credentials.json')
+);
+
+admin.initializeApp({
+    credeintial: admin.credential.cert(credentials)
+});
 
 const app = express();
 app.use(express.json());
@@ -25,6 +35,7 @@ app.get('/api/recipes', async (req, res) => {
 })
 
 // adds new recipe to MongoDB database
+// ** USERS ONLY
 app.post('/api/recipes', async (req, res) => {
     const {name} = req.params;
 
