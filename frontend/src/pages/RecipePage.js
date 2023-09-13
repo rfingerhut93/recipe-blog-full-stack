@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import axios from 'axios';
 import NotFoundPage from "./NotFoundPage";
 import useUser from "../hooks/useUser";
-import NavBar from "../NavBar";
 
 const RecipePage = () => {
     const [recipeInfo, setRecipeInfo] = useState();

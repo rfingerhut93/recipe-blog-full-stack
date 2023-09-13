@@ -10,6 +10,7 @@ const RecipesList = () => {
         const loadRecipeList = async () => {
             const response = await axios.get('/api/recipes');
             const newRecipeList = response.data;
+            newRecipeList.sort((a,b) => a.title.localeCompare(b.title))
             setRecipeList(newRecipeList);
         }
         loadRecipeList();
