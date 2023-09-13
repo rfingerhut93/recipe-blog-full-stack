@@ -1,11 +1,11 @@
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {getAuth, signOut} from 'firebase/auth'
 import useUser from "./hooks/useUser";
 
 const NavBar = () => {
     const navigate = useNavigate();
     const {user, isLoading} = useUser();
-
+    
     return (
         <nav>
             <ul>

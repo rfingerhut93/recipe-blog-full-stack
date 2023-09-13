@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from 'axios';
 import NotFoundPage from "./NotFoundPage";
 import useUser from "../hooks/useUser";
+import NavBar from "../NavBar";
 
 const RecipePage = () => {
     const [recipeInfo, setRecipeInfo] = useState();
@@ -30,6 +31,7 @@ const RecipePage = () => {
 
     return (
     <>
+        <NavBar/>
         <h1>{recipeInfo.title}</h1>
         <h2>Ingredients:</h2>
         <ul key={recipeInfo.name}>
