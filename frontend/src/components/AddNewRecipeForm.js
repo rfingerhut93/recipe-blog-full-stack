@@ -22,15 +22,17 @@ const AddNewRecipeForm = () => {
                     return null;
                 }
             }).filter((ingredient) => ingredient !== null);
+            
 
-            const token = user && await user.getIdToken();
+            const token = user && (await user.getIdToken());
             const headers = token ? {authtoken: token} : {};
+
             await axios.post(`/api/recipes`, {
                 name: recipeName,
                 title: recipeTitle,
                 ingredients: ingredientArr,
                 directions: recipeDirections,
-            }, {headers});
+            }, headers);
 
             console.log("Submission successful.");
 

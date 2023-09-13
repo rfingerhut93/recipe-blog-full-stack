@@ -63,21 +63,23 @@ app.use((req, res, next) => {
 // adds new recipe to MongoDB database
 // ** USERS ONLY
 app.post('/api/recipes', async (req, res) => {
-    const {name} = req.params;
     const { email } = req.user;
-
-    const newRecipe = {
-        ...req.body,
-        email: email,
-    }
+    const {name} = req.params;
 
     const existingRecipe = await db.collection('recipes').findOne({name});
+
+    const newRecipe = {
+        email: email,
+        ...req.body,
+    }
 
     if (existingRecipe){
         return res.status(400).json({error: `Recipe with same name (${newRecipe.name}) already exists. Either update existing recipe or use a different name.`});
     } 
 
+
     await db.collection('recipes').insertOne(newRecipe);
+    
     res.status(201).json({message: "Recipe added successfuly", recipe: newRecipe});
 });
 
