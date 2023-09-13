@@ -3,8 +3,13 @@ import RecipesList from "../components/RecipesList";
 const RecipeListPage = () => {
     return (
     <>
-        <h1>Recipes:</h1>
-        <RecipesList />
+        <form id="recipe-search">
+            <input type="text" placeholder="Recipe name"/>
+            <button>Search</button>
+        </form>
+        <div id="recipe-list">
+            <RecipesList />
+        </div>
     </>
     );
 }

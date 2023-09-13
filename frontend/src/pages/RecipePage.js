@@ -31,7 +31,6 @@ const RecipePage = () => {
 
     return (
     <>
-        <NavBar/>
         <h1>{recipeInfo.title}</h1>
         <h2>Ingredients:</h2>
         <ul key={recipeInfo.name}>
