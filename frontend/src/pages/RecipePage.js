@@ -21,14 +21,14 @@ const RecipePage = () => {
             } catch (error) {
                 console.log("Error: Could not load recipe", error);
             }
-        }
+        } 
+    
         loadRecipeInfo();
+        
     },[recipeId, user]);
 
 
-    if (isLoading){
-        return (<div>Loading...</div>);
-    } else if (!recipeInfo){
+    if (!recipeInfo){
         return (<NotFoundPage />);
     }
 
