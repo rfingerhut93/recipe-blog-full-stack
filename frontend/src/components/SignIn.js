@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 
 const SignIn = () => {
@@ -8,11 +8,12 @@ const SignIn = () => {
     const [error, setError] = useState("");
 
     const navigate = useNavigate();
+    const location = useLocation();
 
     const logIn = async () => {
         try {
             await signInWithEmailAndPassword(getAuth(), email, password);
-            navigate('/recipes');
+            navigate(location.state?.from || "/");
         } catch (error) {
             setError(error.message);
         }
@@ -23,12 +24,14 @@ const SignIn = () => {
         <h1>Log in</h1>
         {error && <p className="error">{error}</p>}
         <input 
-            placeholder="Your email address"
+            placeholder="Your email address" 
+            autoComplete="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
             type="email" />
         <input 
-            placeholder="Your password"
+            placeholder="Your password" 
+            autoComplete="current-password"
             value={password}
             onChange={e => setPassword(e.target.value)}
             type="password" />

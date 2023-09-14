@@ -66,7 +66,8 @@ const RecipePage = () => {
                     : <p>{recipeInfo.directions}</p>
             }
         </ol>
-        <button onClick={deleteRecipe}>Delete</button>
+        {user ? <button onClick={deleteRecipe}>Delete</button> : ""}
+        
     </>
     );
 }
