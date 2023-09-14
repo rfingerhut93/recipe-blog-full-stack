@@ -17,13 +17,15 @@ body {
     background-attachment: fixed; 
   }
   
-  button {
+  .log-in-btn {
     padding: 13px 24px;
     font-family: 'Lucida Grande', 'Helvetica', sans-serif;
     font-size: 20px;
     border-radius: 35px;
     cursor: pointer;
     background-color: white;
+    margin: 0;
+    width: 100%;
   }
 
   h1{
@@ -42,7 +44,7 @@ body {
     align-items: center;
   }
 
-  #home-menu button {
+  button {
     display: block;
     margin: 20px 0;
     min-height: 65px;
@@ -53,6 +55,8 @@ body {
     text-transform: uppercase;
     text-align: center;
     border: none;
+    border-radius: 35px;
+
     outline: none;
     box-shadow: none;
     background-color: transparent;
@@ -135,7 +139,7 @@ body {
   }
   
   nav a:hover {
-    background: black;
+    background: var(--textColor3);
     color: white;
   }
   
