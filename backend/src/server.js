@@ -36,7 +36,7 @@ app.use( async (req,res, next) => {
 app.get('/api/recipes/:name', async (req,res) => {
     const {name} = req.params;
 
-    const recipe = await db.collection('recipes').findOne({ name });
+    const recipe = await db.collection('recipes').findOne({ name: name });
 
     if (recipe){
         res.json(recipe);
@@ -58,6 +58,21 @@ app.use((req, res, next) => {
     } else {
         res.sendStatus(401);
     }
+})
+
+// deletes recipe from MongoDB database
+// ** USERS ONLY
+app.delete('/api/recipes/:name', async (req, res) => {
+
+    const { name } = req.params;
+    
+        const response = await db.collection('recipes').deleteOne({ name });
+        if (response){
+            res.json({message: `Recipe ${name} has been deleted.`});
+        } else {
+            res.status(404).json({error: `Recipe ${name} not found.`});
+        }
+    
 })
 
 // adds new recipe to MongoDB database

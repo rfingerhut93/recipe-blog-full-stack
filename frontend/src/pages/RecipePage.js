@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import NotFoundPage from "./NotFoundPage";
 import useUser from "../hooks/useUser";
@@ -8,6 +8,7 @@ const RecipePage = () => {
     const [recipeInfo, setRecipeInfo] = useState();
     const { recipeId } = useParams();
     const {user} = useUser();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const loadRecipeInfo = async () => {
@@ -28,6 +29,15 @@ const RecipePage = () => {
         return (<NotFoundPage />);
     }
 
+    const deleteRecipe = async () => {
+        try {
+            await axios.delete(`/api/recipes/${recipeId}`);
+            navigate("/recipes");
+        } catch (error){
+            console.error("Could not delete recipe:", error);
+        }
+    }
+
     return (
     <>
         <h1>{recipeInfo.title}</h1>
@@ -39,6 +49,7 @@ const RecipePage = () => {
         </ul>
         <h2>Directions:</h2>
         <p>{recipeInfo.directions}</p>
+        <button onClick={deleteRecipe}>Delete</button>
     </>
     );
 }
