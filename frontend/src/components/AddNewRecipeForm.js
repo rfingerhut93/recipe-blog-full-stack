@@ -11,7 +11,7 @@ const AddNewRecipeForm = () => {
 
     const addRecipe = async () => {
         try {
-            const ingredientArr = recipeIngredients.split("\n").map((line) => {
+            const ingredientArr = recipeIngredients?.split("\n").map((line) => {
                 const [name, measurement] = line.split(",");
                 if (name && measurement){
                     return {
@@ -22,7 +22,9 @@ const AddNewRecipeForm = () => {
                     return null;
                 }
             }).filter((ingredient) => ingredient !== null);
-            
+
+            const directionsArr = recipeDirections?.split("\n");
+
 
             const token = user && (await user.getIdToken());
             const headers = token ? {authtoken: token} : {};
@@ -31,7 +33,7 @@ const AddNewRecipeForm = () => {
                 name: recipeName,
                 title: recipeTitle,
                 ingredients: ingredientArr,
-                directions: recipeDirections,
+                directions: directionsArr,
             }, headers);
 
             console.log("Submission successful.");

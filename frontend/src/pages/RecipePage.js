@@ -42,13 +42,17 @@ const RecipePage = () => {
     <>
         <h1>{recipeInfo.title}</h1>
         <h2>Ingredients:</h2>
-        <ul key={recipeInfo.name}>
+        <ul>
             {recipeInfo.ingredients.map(ingredient => (
                 <li key={ingredient.name}>{ingredient.name}, {ingredient.measurement}</li>
             ))}
         </ul>
         <h2>Directions:</h2>
-        <p>{recipeInfo.directions}</p>
+        <ol>
+            {recipeInfo.directions.map(direction => (
+                <li key={direction}>{direction}</li>
+            ))}
+        </ol>
         <button onClick={deleteRecipe}>Delete</button>
     </>
     );
