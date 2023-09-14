@@ -5,9 +5,9 @@ import NotFoundPage from "./NotFoundPage";
 import useUser from "../hooks/useUser";
 
 const RecipePage = () => {
-    const [recipeInfo, setRecipeInfo] = useState();
+    const [recipeInfo, setRecipeInfo] = useState({});
     const { recipeId } = useParams();
-    const {user} = useUser();
+    const {user, isLoading} = useUser();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -23,9 +23,12 @@ const RecipePage = () => {
             }
         }
         loadRecipeInfo();
-    },[recipeId]);
+    },[recipeId, user]);
 
-    if (!recipeInfo){
+
+    if (isLoading){
+        return (<div>Loading...</div>);
+    } else if (!recipeInfo){
         return (<NotFoundPage />);
     }
 
@@ -43,15 +46,25 @@ const RecipePage = () => {
         <h1>{recipeInfo.title}</h1>
         <h2>Ingredients:</h2>
         <ul>
-            {recipeInfo.ingredients.map(ingredient => (
-                <li key={ingredient.name}>{ingredient.name}, {ingredient.measurement}</li>
-            ))}
+            {
+                (Array.isArray(recipeInfo.ingredients))
+                    ? recipeInfo.ingredients.map(ingredient => (
+                        <li key={ingredient.name}>
+                            {ingredient.name}, {ingredient.measurement}
+                        </li>
+                    ))
+                    : <p>{recipeInfo.ingredients}</p>
+            }
         </ul>
         <h2>Directions:</h2>
         <ol>
-            {recipeInfo.directions.map(direction => (
-                <li key={direction}>{direction}</li>
-            ))}
+            {
+                (Array.isArray(recipeInfo.directions)) 
+                    ? recipeInfo.directions.map(direction => (
+                        <li key={direction}>{direction}</li>
+                    ))
+                    : <p>{recipeInfo.directions}</p>
+            }
         </ol>
         <button onClick={deleteRecipe}>Delete</button>
     </>
