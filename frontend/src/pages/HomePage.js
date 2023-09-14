@@ -10,7 +10,7 @@ const HomePage = () => {
 
     return(
         <>
-            <center><h1>Welcome.</h1></center>
+            <center><h1>Welcome to Food Stuff.</h1></center>
             <div id="home-menu">
                 <button onClick={() => {navigate('/recipes')}}>All Recipes</button>
                 { user 
