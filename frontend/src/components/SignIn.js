@@ -22,6 +22,7 @@ const SignIn = () => {
     return(
         <>
         <h1>Log in</h1>
+
         {error && <p className="error">{error}</p>}
         <input 
             placeholder="Your email address" 
@@ -35,7 +36,11 @@ const SignIn = () => {
             value={password}
             onChange={e => setPassword(e.target.value)}
             type="password" />
-        <button onClick={logIn}>Log In</button>
+        <div id="btn-container">
+            <button onClick={logIn}>Log In</button>
+            <button id="back-to-home-btn" onClick={() => navigate("/")}>Back to Home</button>
+        </div>
+
         <div id="creat-acount-link">
             <Link to="/create-account">Don't have an account? Create one here.</Link>
         </div>

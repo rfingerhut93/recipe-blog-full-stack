@@ -44,30 +44,31 @@ const RecipePage = () => {
     return (
     <>
         <h1>{recipeInfo.title}</h1>
-        <h2>Ingredients:</h2>
-        <ul>
-            {
-                (Array.isArray(recipeInfo.ingredients))
-                    ? recipeInfo.ingredients.map(ingredient => (
-                        <li key={ingredient.name}>
-                            {ingredient.name}, {ingredient.measurement}
-                        </li>
-                    ))
-                    : <p>{recipeInfo.ingredients}</p>
-            }
-        </ul>
-        <h2>Directions:</h2>
-        <ol>
-            {
-                (Array.isArray(recipeInfo.directions)) 
-                    ? recipeInfo.directions.map(direction => (
-                        <li key={direction}>{direction}</li>
-                    ))
-                    : <p>{recipeInfo.directions}</p>
-            }
-        </ol>
-        {user ? <button onClick={deleteRecipe}>Delete</button> : ""}
-        
+        <div class="recipe-body">
+            <h2>Ingredients:</h2>
+            <ul>
+                {
+                    (Array.isArray(recipeInfo.ingredients))
+                        ? recipeInfo.ingredients.map(ingredient => (
+                            <li key={ingredient.name}>
+                                {ingredient.name}, {ingredient.measurement}
+                            </li>
+                        ))
+                        : <p>{recipeInfo.ingredients}</p>
+                }
+            </ul>
+            <h2>Directions:</h2>
+            <ol>
+                {
+                    (Array.isArray(recipeInfo.directions)) 
+                        ? recipeInfo.directions.map(direction => (
+                            <li key={direction}>{direction}</li>
+                        ))
+                        : <p>{recipeInfo.directions}</p>
+                }
+            </ol>
+        </div>
+        {user ? <button onClick={deleteRecipe}>Delete</button> : ""}   
     </>
     );
 }

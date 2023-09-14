@@ -219,6 +219,16 @@ body {
     font-weight: 600;
   }
 
+  #btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  #back-to-home-btn {
+    flex-basis: 30%;
+  }
+
   #recipe-search {
     margin-top: 35px;
     height: auto;
@@ -262,14 +272,20 @@ body {
     opacity: 0.8;
   }
   
-  #upvotes-section button, p {
-    display: inline-block;
-    margin-right: 16px;
+  .recipe-body{
+    background-color: white;
+    padding: 30px;
+    border-radius: 50px;
   }
-  
-  .comment {
-    border-bottom: 2px solid black;
-    padding: 16px;
+
+  .recipe-body li, p{
+    font-size: 18px;
+    line-height: 1.5;
+    width: max-content;
+
+    &:hover{
+      background: yellow;
+    }
   }
   
   .nav-right {

@@ -39,11 +39,11 @@ function App() {
                   <AddNewRecipe />
                 </ProtectedRoute>
               }/>
-              <Route path="/log-in" element={<LogInPage />}/>
               <Route path="/create-account" element={<CreateAccountPage />}/>
               <Route path="*" element={<NotFoundPage />}/>
             </Route>
           <Route path="/" element={<HomePage />}/>
+          <Route path="/log-in" element={<LogInPage />}/>
           </Routes>
         </div>
       </div>
