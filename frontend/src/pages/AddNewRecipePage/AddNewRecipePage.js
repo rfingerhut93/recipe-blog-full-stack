@@ -1,4 +1,5 @@
-import AddNewRecipeForm from '../components/AddNewRecipeForm';
+import AddNewRecipeForm from '../../components/AddNewRecipeForm';
+import "./addNewRecipePage.css";
 
 
 const AddNewRecipePage = () => {

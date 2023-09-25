@@ -21,29 +21,25 @@ const SignIn = () => {
 
     return(
         <>
-        <h1>Log in</h1>
+            <h1 id="log-in-title">Log in</h1>
 
-        {error && <p className="error">{error}</p>}
-        <input 
-            placeholder="Your email address" 
-            autoComplete="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            type="email" />
-        <input 
-            placeholder="Your password" 
-            autoComplete="current-password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            type="password" />
-        <div id="btn-container">
-            <button onClick={logIn}>Log In</button>
-            <button id="back-to-home-btn" onClick={() => navigate("/")}>Back to Home</button>
-        </div>
-
-        <div id="creat-acount-link">
-            <Link to="/create-account">Don't have an account? Create one here.</Link>
-        </div>
+            {error && <p className="error">{error}</p>}
+            <input className="form-element"
+                placeholder="Your email address" 
+                autoComplete="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                type="email" />
+            <input className="form-element"
+                placeholder="Your password" 
+                autoComplete="current-password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                type="password" />
+            <div id="btn-container">
+                <button className="home-btn btn" onClick={logIn}>Log In</button>
+                <button className="home-btn btn" id="back-to-home-btn" onClick={() => navigate("/")}>Back to Home</button>
+            </div>
         </>
     );
 }

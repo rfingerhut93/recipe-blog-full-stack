@@ -7,7 +7,7 @@ const AddNewRecipeForm = () => {
     const [recipeTitle, setRecipeTitle] = useState("");
     const [recipeIngredients, setRecipeIngredients] = useState("");
     const [recipeDirections, setRecipeDirections] = useState("");
-    const {user, isLoading} = useUser();
+    const {user} = useUser();
 
     const addRecipe = async () => {
         try {
@@ -53,14 +53,14 @@ const AddNewRecipeForm = () => {
         
             <div id="add-recipe-form">
                 <label htmlFor="">Name (url-friendly)</label>
-                <input type="text" name="recipeName" placeholder="Recipe name" value={recipeName} onChange={(event) => setRecipeName(event.target.value)}/>
+                <input className="form-element add" type="text" name="recipeName" placeholder="Recipe name" value={recipeName} onChange={(event) => setRecipeName(event.target.value)}/>
                 <label htmlFor="">Title</label>
-                <input type="text" name="recipeTitle" placeholder="Recipe title" value={recipeTitle} onChange={(event) => setRecipeTitle(event.target.value)}/>
+                <input className="form-element add" type="text" name="recipeTitle" placeholder="Recipe title" value={recipeTitle} onChange={(event) => setRecipeTitle(event.target.value)}/>
                 <label htmlFor="">Ingredients</label>
-                <textarea name="recipeIngredients" id="" cols="30" rows="10" placeholder="Ingredient, measurement" value={recipeIngredients} onChange={(event) => setRecipeIngredients(event.target.value)}/>
+                <textarea className="form-element add" name="recipeIngredients" id="" cols="30" rows="10" placeholder="Ingredient, measurement" value={recipeIngredients} onChange={(event) => setRecipeIngredients(event.target.value)}/>
                 <label htmlFor="">Directions</label>
-                <textarea name="recipeDirections" id="" cols="30" rows="10" value={recipeDirections} onChange={(event) => setRecipeDirections(event.target.value)}></textarea>
-                <button onClick={addRecipe}>Add Recipe</button>
+                <textarea className="form-element add" name="recipeDirections" id="" cols="30" rows="10" value={recipeDirections} onChange={(event) => setRecipeDirections(event.target.value)}></textarea>
+                <button className="home-btn" onClick={addRecipe}>Add Recipe</button>
             </div>
         
     );

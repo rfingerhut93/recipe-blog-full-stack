@@ -1,5 +1,5 @@
-import RecipeSearch from "../components/RecipeSearch";
-import RecipesList from "../components/RecipesList";
+import RecipesList from "../../components/RecipesList";
+import './recipeListPage.css';
 
 const RecipeListPage = () => {
     return (

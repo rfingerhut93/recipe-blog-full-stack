@@ -1,0 +1,47 @@
+#add-recipe-form {
+    width: 80%;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #add-recipe-form button {
+    width: 60%;
+    height: auto;
+  }
+
+
+
+  label{
+    font-size: 1.4rem;
+    align-self: flex-start;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .form-element.add{
+    margin-bottom: 2rem;
+  }
+
+  @media screen and (max-width: 720px) {
+    #add-recipe-form button{
+        width: 100%;
+        line-height: 1;
+        text-align: center;
+        padding: 1rem;
+    } 
+  }
+
+  @media screen and (max-width: 375px){
+    #add-recipe-form{
+        width: 100%;
+        padding: 0;
+    }
+    .form-element.add{
+        width: 100%;
+    }
+  }
+

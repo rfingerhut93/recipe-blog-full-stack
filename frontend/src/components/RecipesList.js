@@ -20,7 +20,7 @@ const RecipesList = () => {
         <>
             {recipeList.map(recipe => (
                 <Link key={recipe.name} className="recipe-list-item" to={`/recipes/${recipe.name}`}>
-                    <h3>{recipe.title}</h3>
+                    <h3 className="recipe-list-item-title">{recipe.title}</h3>
                 </Link>
                 
             ))}

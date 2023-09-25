@@ -1,0 +1,74 @@
+#log-in-page{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#log-in-title{
+    font-size: 5rem;
+    font-weight: 700;
+    width: 100%;
+    height: auto;
+    text-align: left;
+    margin: 0;
+}
+
+.form-element {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    border: 2px solid black;
+    margin: 1rem 0;
+  }
+
+  #btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    margin: 1rem 0;
+  }
+ 
+  .btn{
+    flex-basis: 40%;
+    font-size: 1.8rem;
+    line-height: 1;
+    padding: 1rem 2rem;
+    margin: 0;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+  }
+
+#link{
+    text-decoration: none;
+    color: black;
+}
+
+.error {
+  padding: 8px;
+  border-radius: 4px;
+  background-color: pink;
+}
+
+@media screen and (max-width: 375px) {
+  #log-in-page{
+    width: 100%;
+  }
+  #log-in-title{
+    font-size: 2rem;
+  }
+  #btn-container{
+    flex-direction: column;
+  }
+  .btn{
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+}

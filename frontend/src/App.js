@@ -1,12 +1,12 @@
 import './App.css';
 import { Routes, Route, BrowserRouter, Outlet } from 'react-router-dom';
-import HomePage from './pages/HomePage';
+import HomePage from './pages/HomePage/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
-import RecipeListPage from './pages/RecipeListPage';
-import RecipePage from './pages/RecipePage';
-import AddNewRecipe from './pages/AddNewRecipePage';
+import RecipeListPage from './pages/RecipeListPage/RecipeListPage';
+import RecipePage from './pages/RecipePage/RecipePage';
+import AddNewRecipe from './pages/AddNewRecipePage/AddNewRecipePage';
 import CreateAccountPage from './pages/CreateAccountPage';
-import LogInPage from './pages/LogInPage';
+import LogInPage from './pages/LogInPage/LogInPage';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import useUser from './hooks/useUser';
 import NavBar from './NavBar';

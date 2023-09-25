@@ -1,0 +1,139 @@
+#text{
+    width: 100%;
+    text-align: center;
+}
+
+
+#home-title{
+    font-size: 5rem;
+    color: var(--textColor3);
+    vertical-align: middle;
+    width: 100%;
+}
+
+#type-effect {
+    display: inline-block;
+    font-size: 5rem;
+    border-right: 3px solid #000;
+    width: auto;
+    animation: typing 3s steps(11) 1s forwards;
+    vertical-align: middle;
+    font-family: 'Space Mono', monospace;
+  }
+  
+  #type-effect span {
+    display: inline-block;
+    white-space: nowrap;
+    width: 0;
+  }
+
+  #home-menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home-btn {
+    display: block;
+    line-height: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 2rem;
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
+    background-position: top center;
+    transition: 0.3s ease-in-out;
+    transition-property: background, color;
+    position: relative;
+    color: var(--textColor3);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    overflow: hidden;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    font-size: 2rem;
+    padding: 2rem 5rem;
+    margin: 1rem 0;
+    cursor: pointer;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      border: 2px solid var(--highlight-bg);
+      background-position: center;
+      border-radius: 2rem;
+      z-index: -1;
+      transition: border-color 0.2s;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 70vmax;
+      height: 70vmax;
+      border-radius: 50%;
+      background-color: var(--highlight-bg);
+      transform-origin: center;
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform 0.4s ease-in-out;
+      z-index: -1;
+    }
+    
+    &:hover, &:hover:focus {
+      color: var(--textColor2);
+      &::after {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+  }
+
+  @media screen and (max-width: 720px) {
+    .home-btn, .btn {
+      background-color: transparent;
+      box-shadow: none;
+      border: 2px solid transparent;
+      width: 100%;
+
+      &::after {
+        display: none; 
+      }
+  
+      &:hover,
+      &:hover:focus {
+        color: var(--textColor3);
+      }
+    }
+  }
+
+  @media screen and (max-width: 375px) {
+    #text{
+      width: 100%;
+      font-size: 2rem;
+      padding: 0 1rem;
+    }
+    #home-title{
+      width: 100%;
+      padding: 0 1rem;
+      font-size: 2.2rem;
+    }
+    #type-effect{
+      font-size: 2.2rem;
+    }
+    .home-btn, .btn{
+      line-height: 1;
+      padding: 1.5rem 2rem;
+      font-size: 1.5rem;
+    }
+  }
+  
+  
+  
