@@ -5,7 +5,7 @@ import "./addNewRecipePage.css";
 const AddNewRecipePage = () => {
     return (
         <>
-            <h1>Add A New Recipe</h1>
+            <h1 id="add-title">Add A New Recipe</h1>
             <AddNewRecipeForm/>
         </>
     );

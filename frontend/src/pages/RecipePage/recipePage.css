@@ -80,7 +80,7 @@
     }
 }
 
-@media screen and (max-width: 375px){
+@media screen and (max-width: 720px){
   .recipe-header{
     font-size: 1.8rem;
     width: 100%;
@@ -96,8 +96,11 @@
     font-size: 1.1rem;
     line-height: 1.3;
   }
-
   .direction-item, .ingredient-item{
     margin-bottom: 1rem;
+  }
+  #delete-btn{
+    align-self: center;
+    width: 100%;
   }
 }

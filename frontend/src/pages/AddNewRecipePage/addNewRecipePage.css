@@ -12,6 +12,11 @@
     height: auto;
   }
 
+  #add-title{
+    font-size: 5rem;
+    text-align: center;
+  }
+
 
 
   label{
@@ -33,15 +38,21 @@
         text-align: center;
         padding: 1rem;
     } 
-  }
-
-  @media screen and (max-width: 375px){
     #add-recipe-form{
-        width: 100%;
-        padding: 0;
+      width: 100%;
+      padding: 0;
     }
     .form-element.add{
         width: 100%;
+        margin: 0 0 1rem 0;
+    }
+    #add-title{
+      font-size: 2rem;
+    }
+    label{
+      font-size: 1.3rem;
     }
   }
+
+ 
 

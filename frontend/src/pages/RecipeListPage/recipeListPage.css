@@ -37,7 +37,7 @@
     height: auto;
   }
 
-@media screen and (max-width: 375px){
+@media screen and (max-width: 720px){
   .recipe-list-item{
     width: 100%;
   }
