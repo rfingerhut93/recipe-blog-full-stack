@@ -18,6 +18,11 @@ const AddNewRecipeForm = () => {
                         name: name.trim(),
                         measurement: measurement.trim()
                     }
+                } else if (name) {
+                    return {
+                        name: name.trim(),
+                        measurement: null
+                    };
                 } else {
                     return null;
                 }
