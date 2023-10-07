@@ -58,7 +58,7 @@ const AddNewRecipeForm = () => {
         
             <div id="add-recipe-form">
                 <label htmlFor="">Name (url-friendly)</label>
-                <input className="form-element add" type="text" name="recipeName" placeholder="Recipe name" value={recipeName} onChange={(event) => setRecipeName(event.target.value)}/>
+                <input className="form-element add" type="text" name="recipeName" placeholder="recipe-name" value={recipeName} onChange={(event) => setRecipeName(event.target.value)}/>
                 <label htmlFor="">Title</label>
                 <input className="form-element add" type="text" name="recipeTitle" placeholder="Recipe title" value={recipeTitle} onChange={(event) => setRecipeTitle(event.target.value)}/>
                 <label htmlFor="">Ingredients</label>
