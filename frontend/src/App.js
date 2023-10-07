@@ -5,7 +5,6 @@ import NotFoundPage from './pages/NotFoundPage';
 import RecipeListPage from './pages/RecipeListPage/RecipeListPage';
 import RecipePage from './pages/RecipePage/RecipePage';
 import AddNewRecipe from './pages/AddNewRecipePage/AddNewRecipePage';
-import CreateAccountPage from './pages/CreateAccountPage';
 import LogInPage from './pages/LogInPage/LogInPage';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import useUser from './hooks/useUser';
@@ -39,7 +38,6 @@ function App() {
                   <AddNewRecipe />
                 </ProtectedRoute>
               }/>
-              <Route path="/create-account" element={<CreateAccountPage />}/>
               <Route path="*" element={<NotFoundPage />}/>
             </Route>
           <Route path="/" element={<HomePage />}/>
