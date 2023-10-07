@@ -52,7 +52,8 @@ const RecipePage = () => {
                         (Array.isArray(recipeInfo.ingredients))
                             ? recipeInfo.ingredients.map(ingredient => (
                                 <li className="ingredient-item" key={ingredient.name}>
-                                    {ingredient.name}, {ingredient.measurement}
+                                    {ingredient.name}
+                                    {ingredient.measurement ? `, ${ingredient.measurement}` : ''}
                                 </li>
                             ))
                             : <p>{recipeInfo.ingredients}</p>
