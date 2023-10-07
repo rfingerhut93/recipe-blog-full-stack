@@ -9,6 +9,10 @@ const AddNewRecipeForm = () => {
     const [recipeDirections, setRecipeDirections] = useState("");
     const {user} = useUser();
 
+    const generateUrlFriendlyName = (title) => {
+        return title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+    };
+
     const addRecipe = async () => {
         try {
             const ingredientArr = recipeIngredients?.split("\n").map((line) => {
@@ -34,8 +38,11 @@ const AddNewRecipeForm = () => {
             const token = user && (await user.getIdToken());
             const headers = token ? {authtoken: token} : {};
 
+            const url = generateUrlFriendlyName(recipeTitle);
+
+
             await axios.post(`/api/recipes`, {
-                name: recipeName,
+                name: url,
                 title: recipeTitle,
                 ingredients: ingredientArr,
                 directions: directionsArr,
@@ -54,11 +61,13 @@ const AddNewRecipeForm = () => {
         }
     }
 
+   
+
     return (
         
             <div id="add-recipe-form">
-                <label htmlFor="">Name (url-friendly)</label>
-                <input className="form-element add" type="text" name="recipeName" placeholder="recipe-name" value={recipeName} onChange={(event) => setRecipeName(event.target.value)}/>
+                {/* <label htmlFor="">Name (url-friendly)</label>
+                <input className="form-element add" type="text" name="recipeName" placeholder="recipe-name" value={recipeName} onChange={(event) => setRecipeName(event.target.value)}/> */}
                 <label htmlFor="">Title</label>
                 <input className="form-element add" type="text" name="recipeTitle" placeholder="Recipe title" value={recipeTitle} onChange={(event) => setRecipeTitle(event.target.value)}/>
                 <label htmlFor="">Ingredients</label>
