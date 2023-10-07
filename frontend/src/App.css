@@ -29,7 +29,7 @@ body {
     font-family: 'Lucida Grande', 'Helvetica', sans-serif;
     font-size: 18px;
     color: #0e0e30;
-    background: linear-gradient(109.6deg, rgb(255, 219, 47) 11.2%, rgb(244, 253, 0) 100.2%);
+    background:  rgb(206, 216, 53);
     background-attachment: fixed; 
     width: 100%;
   }
