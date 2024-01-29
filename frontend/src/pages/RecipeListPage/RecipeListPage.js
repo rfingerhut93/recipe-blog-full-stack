@@ -1,12 +1,35 @@
 import RecipesList from "../../components/RecipesList";
+import RecipeSearch from "../../components/RecipeSearch";
 import './recipeListPage.css';
+import { useState } from "react";
 
 const RecipeListPage = () => {
+    const [recipeList, setRecipeList] = useState([]);
+    const [queryResults, setQueryResults] = useState([]);
+    const [searchError, setSearchError] = useState("");
+    
+    const handleSearchResults = (results) => {
+        if (results.length === 0){
+            setSearchError("No recipes found with that name.")
+        } else {
+            setSearchError("");
+        }
+        setQueryResults(results);
+    }
+
     return (
     <>
+        <RecipeSearch onSearchResults={handleSearchResults} />
         <div id="recipe-list">
-            <RecipesList />
-        </div>
+        {searchError ? (
+          <p>{searchError}</p>
+        ) : (
+          <RecipesList
+            recipeList={queryResults.length > 0 ? queryResults : recipeList}
+            setRecipeList={setRecipeList}
+          />
+        )}
+      </div>
     </>
     );
 }

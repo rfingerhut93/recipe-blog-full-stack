@@ -24,8 +24,8 @@ const NavBar = () => {
             </ul>
             <div id="nav-right">
                 {user 
-                    ? <button class="log-in-btn" onClick={() => {signOut(getAuth());}}>Log Out</button> 
-                    : <button class="log-in-btn" onClick={handleRedirect}>Log In</button>}
+                    ? <button className="log-in-btn" onClick={() => {signOut(getAuth());}}>Log Out</button> 
+                    : <button className="log-in-btn" onClick={handleRedirect}>Log In</button>}
             </div>
         </nav>
     );

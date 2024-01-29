@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 // Updates when new recipe is added (AddNewRecipeForm.js)
-const RecipesList = () => {
-    const [recipeList, setRecipeList] = useState([]);
+const RecipesList = ({recipeList, setRecipeList}) => {
+    // const [recipeList, setRecipeList] = useState([]);
 
     useEffect(() => {
         const loadRecipeList = async () => {

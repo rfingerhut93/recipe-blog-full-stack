@@ -14,17 +14,12 @@ const credentials = JSON.parse(
 );
 
 admin.initializeApp({
-    credeintial: admin.credential.cert(credentials)
+    credential: admin.credential.cert(credentials)
 });
 
 const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../build')));
-
-// handles all other requests
-app.get(/^(?!\/api).+/, (req, res) => {
-    res.sendFile(path.join(__dirname, '../build/index.html'));
-});
 
 // middleware: load user information upon request
 app.use( async (req,res, next) => {
@@ -62,6 +57,21 @@ app.get('/api/recipes', async (req, res) => {
     const recipes = await db.collection('recipes').find({}).toArray();
     res.json(recipes);
 })
+
+// Search Endpoint
+app.get('/api/search', async (req, res) => {
+    const { query } = req.query;
+
+    try {
+        // Perform the search query
+        const searchResults = await db.collection('recipes').find({ $text: { $search: query } }).toArray();
+        
+        res.json(searchResults);
+    } catch (error) {
+        console.error('Error searching:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 // Rejects endpoint access if user is not logged in
 app.use((req, res, next) => {
@@ -149,8 +159,6 @@ app.put('/api/recipes/:name/directions', async(req, res)=> {
     const { name } = req.params;
     const { index, newDirection } = req.body;
 
-
-
     const existingRecipe = await db.collection('recipes').findOne({ name });
 
     if (existingRecipe){
@@ -175,6 +183,11 @@ app.put('/api/recipes/:name/directions', async(req, res)=> {
         res.send('Error: This recipe does not exist and cannot be updated.')
     }
 });
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
+
 
 const PORT = process.env.PORT || 8000;
 

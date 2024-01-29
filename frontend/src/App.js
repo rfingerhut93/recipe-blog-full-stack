@@ -11,6 +11,7 @@ import useUser from './hooks/useUser';
 import NavBar from './NavBar';
 
 
+
 function App() {
   const {user, isLoading} = useUser();
 
