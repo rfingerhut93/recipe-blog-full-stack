@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 
-// Updates when new recipe is added (AddNewRecipeForm.js)
 const RecipesList = ({recipeList, setRecipeList}) => {
-    // const [recipeList, setRecipeList] = useState([]);
 
     useEffect(() => {
         const loadRecipeList = async () => {

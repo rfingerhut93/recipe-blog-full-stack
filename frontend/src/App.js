@@ -9,11 +9,19 @@ import LogInPage from './pages/LogInPage/LogInPage';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import useUser from './hooks/useUser';
 import NavBar from './NavBar';
-
-
+import { useState } from 'react';
 
 function App() {
   const {user, isLoading} = useUser();
+
+  // ADDED
+  const [queryResults, setQueryResults] = useState([]);
+  const [recipeName, setRecipeName] = useState('');
+
+  const clearQueryResults = () => {
+    setQueryResults([]);
+    setRecipeName('');
+  }
 
   if (isLoading) {
     return (<h1>Loading...</h1>);
@@ -27,12 +35,12 @@ function App() {
             <Route
               element={(
                 <>
-                  <NavBar />
+                  <NavBar clearQueryResults={clearQueryResults}/>
                   <Outlet />
                 </>
               )}
             >
-              <Route path ="/recipes" element={<RecipeListPage/>}/>
+              <Route path ="/recipes" element={<RecipeListPage setQueryResults={setQueryResults} queryResults={queryResults} recipeName={recipeName} setRecipeName={setRecipeName}/> } />
               <Route path="/recipes/:recipeId" element={<RecipePage/>}/>
               <Route path="/add-new-recipe" element={
                 <ProtectedRoute>

@@ -3,12 +3,16 @@ import {getAuth, signOut} from 'firebase/auth'
 import useUser from "./hooks/useUser";
 import "./navbar.css"
 
-const NavBar = () => {
+const NavBar = ({clearQueryResults}) => {
     const navigate = useNavigate();
     const {user} = useUser();
 
     const handleRedirect = () => {
         navigate("/log-in", {state: {from:window.location.pathname}});
+    }
+
+    const handleClick = () => {
+        clearQueryResults();
     }
     
     return (
@@ -18,7 +22,7 @@ const NavBar = () => {
                     <Link className="link" to="/">Home</Link>
                 </li>
                 <li className="nav-link">
-                    <Link className="link" to="/recipes">Recipes</Link>
+                    <Link className="link" to="/recipes" onClick={handleClick}>Recipes</Link>
                 </li>
                 { user && (<li className="nav-link"><Link className="link" to="/add-new-recipe">Add A Recipe</Link></li>)}
             </ul>
