@@ -64,8 +64,10 @@ app.get('/api/search', async (req, res) => {
 
     try {
         // Perform the search query
-        const searchResults = await db.collection('recipes').find({ $text: { $search: query } }).toArray();
-        
+        // const searchResults = await db.collection('recipes').find({ $text: { $search: query } }).toArray();
+
+        const searchResults = await db.collection('recipes').find({ title: { $regex: new RegExp(query, 'i') } }).toArray();
+
         res.json(searchResults);
     } catch (error) {
         console.error('Error searching:', error);
