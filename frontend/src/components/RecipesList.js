@@ -17,7 +17,7 @@ const RecipesList = ({recipeList, setRecipeList}) => {
     return (
         <>
             {recipeList.map(recipe => (
-                <Link key={recipe.name} className="recipe-list-item" to={`/recipes/${recipe.name}`}>
+                <Link key={recipe._id} className="recipe-list-item" to={`/recipes/${recipe.name}`}>
                     <h3 className="recipe-list-item-title">{recipe.title}</h3>
                 </Link>
                 

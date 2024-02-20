@@ -17,11 +17,11 @@ const AddNewRecipeForm = () => {
         try {
             const ingredientArr = recipeIngredients?.split("\n").map((line) => {
                 const [name, measurement] = line.split(",");
-                if (name && measurement){
+                if (name && measurement) {
                     return {
                         name: name.trim(),
                         measurement: measurement.trim()
-                    }
+                    };
                 } else if (name) {
                     return {
                         name: name.trim(),
@@ -31,43 +31,38 @@ const AddNewRecipeForm = () => {
                     return null;
                 }
             }).filter((ingredient) => ingredient !== null);
-
+    
             const directionsArr = recipeDirections?.split("\n");
-
-
+    
             const token = user && (await user.getIdToken());
-            const headers = token ? {authtoken: token} : {};
-
+            const headers = token ? { authtoken: token } : {};
+    
             const url = generateUrlFriendlyName(recipeTitle);
-
-
+    
             await axios.post(`/api/recipes`, {
                 name: url,
                 title: recipeTitle,
                 ingredients: ingredientArr,
                 directions: directionsArr,
-            }, headers);
-
+            }, { headers });
+    
             console.log("Submission successful.");
-
+    
             // Clear form after submission
-            setRecipeName("");
             setRecipeTitle("");
             setRecipeIngredients("");
             setRecipeDirections("");
-
         } catch (error) {
             console.error("Error: Couldn't add recipe", error);
         }
-    }
+    };
+    
 
    
 
     return (
         
             <div id="add-recipe-form">
-                {/* <label htmlFor="">Name (url-friendly)</label>
-                <input className="form-element add" type="text" name="recipeName" placeholder="recipe-name" value={recipeName} onChange={(event) => setRecipeName(event.target.value)}/> */}
                 <label htmlFor="">Title</label>
                 <input className="form-element add" type="text" name="recipeTitle" placeholder="Recipe title" value={recipeTitle} onChange={(event) => setRecipeTitle(event.target.value)}/>
                 <label htmlFor="">Ingredients</label>
