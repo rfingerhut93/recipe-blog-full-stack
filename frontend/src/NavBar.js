@@ -19,10 +19,7 @@ const NavBar = ({clearQueryResults}) => {
         <nav id="nav">
             <ul id="nav-left">
                 <li className="nav-link">
-                    <Link className="link" to="/">Home</Link>
-                </li>
-                <li className="nav-link">
-                    <Link className="link" to="/recipes" onClick={handleClick}>Recipes</Link>
+                    <Link className="link" to="/" onClick={handleClick}>Home</Link>
                 </li>
                 { user && (<li className="nav-link"><Link className="link" to="/add-new-recipe">Add A Recipe</Link></li>)}
             </ul>

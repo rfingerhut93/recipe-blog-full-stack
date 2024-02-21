@@ -31,26 +31,17 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <div id="page-body">
+          <NavBar clearQueryResults={clearQueryResults} />
           <Routes>
-            <Route
-              element={(
-                <>
-                  <NavBar clearQueryResults={clearQueryResults}/>
-                  <Outlet />
-                </>
-              )}
-            >
-              <Route path ="/recipes" element={<RecipeListPage setQueryResults={setQueryResults} queryResults={queryResults} recipeName={recipeName} setRecipeName={setRecipeName}/> } />
-              <Route path="/recipes/:recipeId" element={<RecipePage/>}/>
-              <Route path="/add-new-recipe" element={
-                <ProtectedRoute>
-                  <AddNewRecipe />
-                </ProtectedRoute>
-              }/>
-              <Route path="*" element={<NotFoundPage />}/>
-            </Route>
-          <Route path="/" element={<HomePage />}/>
-          <Route path="/log-in" element={<LogInPage />}/>
+            <Route path="/" element={<RecipeListPage setQueryResults={setQueryResults} queryResults={queryResults} recipeName={recipeName} setRecipeName={setRecipeName} />} />
+            <Route path="/recipes/:recipeId" element={<RecipePage />} />
+            <Route path="/add-new-recipe" element={
+              <ProtectedRoute>
+                <AddNewRecipe />
+              </ProtectedRoute>
+            } />
+            <Route path="/log-in" element={<LogInPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
       </div>
