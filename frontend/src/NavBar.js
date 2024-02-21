@@ -11,7 +11,7 @@ const NavBar = ({clearQueryResults}) => {
         navigate("/log-in", {state: {from:window.location.pathname}});
     }
 
-    const handleClick = () => {
+    const handleClick = (event) => {
         clearQueryResults();
     }
     
