@@ -18,9 +18,10 @@ const RecipesList = ({recipeList, setRecipeList}) => {
         <>
             {recipeList.map(recipe => (
                 <Link key={recipe._id} className="recipe-list-item" to={`/recipes/${recipe.name}`}>
-                    <h3 className="recipe-list-item-title">{recipe.title}</h3>
+                    <div className="recipe-card">
+                        <h3 className="recipe-title">{recipe.title}</h3>
+                    </div>
                 </Link>
-                
             ))}
         </>
     );

@@ -19,17 +19,19 @@ const RecipeListPage = ({queryResults, setQueryResults, recipeName, setRecipeNam
 
     return (
     <>
-        <RecipeSearch onSearchResults={handleSearchResults} recipeName={recipeName} setRecipeName={setRecipeName}/>
+        <div className="recipe-search-container">
+          <RecipeSearch onSearchResults={handleSearchResults} recipeName={recipeName} setRecipeName={setRecipeName}/>
+        </div>
         <div id="recipe-list">
-        {searchError ? (
-          <p>{searchError}</p>
-        ) : (
-          <RecipesList
-            recipeList={queryResults.length > 0 ? queryResults : recipeList}
-            setRecipeList={setRecipeList}
-          />
-        )}
-      </div>
+          {searchError ? (
+            <p>{searchError}</p>
+          ) : (
+            <RecipesList
+              recipeList={queryResults.length > 0 ? queryResults : recipeList}
+              setRecipeList={setRecipeList}
+            />
+          )}
+        </div>
     </>
     );
 }

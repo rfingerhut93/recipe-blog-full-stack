@@ -1,6 +1,5 @@
 import './App.css';
-import { Routes, Route, BrowserRouter, Outlet } from 'react-router-dom';
-import HomePage from './pages/HomePage/HomePage';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import NotFoundPage from './pages/NotFoundPage';
 import RecipeListPage from './pages/RecipeListPage/RecipeListPage';
 import RecipePage from './pages/RecipePage/RecipePage';
@@ -30,8 +29,8 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
+      <NavBar clearQueryResults={clearQueryResults} />
         <div id="page-body">
-          <NavBar clearQueryResults={clearQueryResults} />
           <Routes>
             <Route path="/" element={<RecipeListPage setQueryResults={setQueryResults} queryResults={queryResults} recipeName={recipeName} setRecipeName={setRecipeName} />} />
             <Route path="/recipes/:recipeId" element={<RecipePage />} />
