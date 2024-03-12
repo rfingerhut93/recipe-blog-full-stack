@@ -17,7 +17,12 @@
     text-align: center;
   }
 
-
+  .button-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-bottom: 2rem;
+  }
 
   label{
     font-size: 1.4rem;

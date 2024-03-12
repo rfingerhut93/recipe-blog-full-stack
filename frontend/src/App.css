@@ -9,7 +9,7 @@
   /* Orange  */
   --accent-color: #FF7043 ;
   /* White */
-  --background-color: #FFFFFF;
+  --background-color: #ffffff;
 
 
 }
@@ -38,8 +38,6 @@ body {
     font-family: 'Lucida Grande', 'Helvetica', sans-serif;
     font-size: 18px;
     color: #0e0e30;
-    /* background:  rgb(236, 216, 53); */
-    background: var(--primary-color);
     background-attachment: fixed; 
     width: 100%;
   }
@@ -52,12 +50,30 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: white;
+    background-color: var(--background-color);
     margin-left: 250px; /* Add padding for the sidebar */
     width: 100vw;
     padding: 0 5vw;
   }
 
+  .button {
+    padding: 10px 20px;
+    font-size: 1.2rem; 
+    background-color: var(--primary-color); 
+    color: #fff; 
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    height: 3rem;
+    margin: 1px;
+    width: 30%;
+    height: 3rem;
+  }
+
+  #edit-recipe-form{
+    width: 100%;
+  }
  
   
   @media screen and (max-width: 13366px){

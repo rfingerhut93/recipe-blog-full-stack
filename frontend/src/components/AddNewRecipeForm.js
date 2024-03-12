@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import useUser from '../hooks/useUser';
+import { useNavigate } from "react-router";
 
 const AddNewRecipeForm = () => {
     const [recipeName, setRecipeName] = useState("");
@@ -8,6 +9,8 @@ const AddNewRecipeForm = () => {
     const [recipeIngredients, setRecipeIngredients] = useState("");
     const [recipeDirections, setRecipeDirections] = useState("");
     const {user} = useUser();
+
+    const navigate = useNavigate();
 
     const generateUrlFriendlyName = (title) => {
         return title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
@@ -58,8 +61,6 @@ const AddNewRecipeForm = () => {
     };
     
 
-   
-
     return (
         
             <div id="add-recipe-form">
@@ -69,9 +70,11 @@ const AddNewRecipeForm = () => {
                 <textarea className="form-element add" name="recipeIngredients" id="" cols="30" rows="10" placeholder="Ingredient, measurement" value={recipeIngredients} onChange={(event) => setRecipeIngredients(event.target.value)}/>
                 <label htmlFor="">Directions</label>
                 <textarea className="form-element add" name="recipeDirections" id="" cols="30" rows="10" value={recipeDirections} onChange={(event) => setRecipeDirections(event.target.value)}></textarea>
-                <button className="home-btn" onClick={addRecipe}>Add Recipe</button>
-            </div>
-        
+                <div className="button-container">
+                    <button className="button" id="add-new-reicpe-btn"onClick={addRecipe}>Add Recipe</button>
+                    <button className="button" id="back-btn" onClick={() => navigate("/")}>Back to Recipes</button>
+                </div>
+            </div>  
     );
 }
 

@@ -82,8 +82,10 @@ const EditRecipeForm = ({ recipeName, toggleEditMode }) => {
             <textarea className="form-element edit" name="recipeIngredients" id="" cols="30" rows="10" placeholder="Ingredient, measurement" value={recipeIngredients} onChange={(event) => setRecipeIngredients(event.target.value)} />
             <label htmlFor="">Directions</label>
             <textarea className="form-element edit" name="recipeDirections" id="" cols="30" rows="10" value={recipeDirections} onChange={(event) => setRecipeDirections(event.target.value)}></textarea>
-            <button className="home-btn" onClick={updateRecipe}>Update Recipe</button>
-            <button className="home-btn" onClick={cancelEdit}>Cancel Edit</button>
+            <div className="button-container">
+                <button className="button" onClick={updateRecipe}>Update Recipe</button>
+                <button className="button" onClick={cancelEdit}>Cancel Edit</button>
+            </div>
 
         </div>
     );

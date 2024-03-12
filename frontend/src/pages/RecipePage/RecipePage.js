@@ -83,14 +83,17 @@ const RecipePage = () => {
                                     : <p>{recipeInfo.directions}</p>
                             }
                         </ol>
-                        {user && (
-                            <>
-                                <button className="home-btn" onClick={toggleEditMode}>
-                                    {editMode ? "Cancel Edit" : "Edit Recipe"}
-                                </button>
-                                <button className="home-btn" id="delete-btn" onClick={deleteRecipe}>Delete</button>
-                            </>
-                        )}
+                        <div className="recipe-page-button-container">
+                            <button className="button" id="back-btn" onClick={() => navigate('/')}>Back to Recipes</button>
+                            {user && (
+                                <>
+                                    <button className="button" id="edit-btn" onClick={toggleEditMode}>
+                                        {editMode ? "Cancel Edit" : "Edit Recipe"}
+                                    </button>
+                                    <button className="button" id="delete-btn" onClick={deleteRecipe}>Delete</button>
+                                </>
+                            )}
+                        </div>
                     </>
                 )}
             </div>
