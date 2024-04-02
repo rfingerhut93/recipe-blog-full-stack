@@ -18,7 +18,7 @@ const RecipeListPage = ({queryResults, setQueryResults, recipeName, setRecipeNam
     }
 
     return (
-    <>
+    <div className="recipe-list-page-container">
         <div className="recipe-search-container">
           <RecipeSearch onSearchResults={handleSearchResults} recipeName={recipeName} setRecipeName={setRecipeName}/>
         </div>
@@ -32,7 +32,7 @@ const RecipeListPage = ({queryResults, setQueryResults, recipeName, setRecipeNam
             />
           )}
         </div>
-    </>
+    </div>
     );
 }
 

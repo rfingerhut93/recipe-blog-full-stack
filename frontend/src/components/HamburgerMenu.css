@@ -1,0 +1,45 @@
+/* HamburgerMenu.css */
+
+.hamburger {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column nowrap;
+    z-index: 10;
+}
+
+.burger {
+    width: 2rem;
+    height: 0.25rem;
+    border-radius: 10px;
+    background-color: black;
+    transform-origin: 1px;
+    transition: all 0.3s linear;
+}
+
+.burger1 {
+    transform: rotate(0);
+}
+
+.burger2 {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.burger3 {
+    transform: rotate(0);
+}
+
+.open .burger1 {
+    transform: rotate(45deg);
+}
+
+.open .burger2 {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.open .burger3 {
+    transform: rotate(-45deg);
+}

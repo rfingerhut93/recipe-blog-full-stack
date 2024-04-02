@@ -51,9 +51,9 @@ body {
     flex-direction: column;
     justify-content: center;
     background-color: var(--background-color);
-    margin-left: 250px; /* Add padding for the sidebar */
-    width: 100vw;
-    padding: 0 5vw;
+    padding-left: 300px;
+    padding-right: 50px;
+    width: 100%;
   }
 
   .button {
@@ -76,18 +76,9 @@ body {
   }
  
   
-  @media screen and (max-width: 13366px){
-
-  }
-
-  @media screen and (max-width: 1024px) {
-
-  }
-
-  @media screen and (max-width: 768px) {
-
-  }
-
-  @media screen and (max-width: 480px) {
-
+  @media (max-width: 767px) {
+    #page-body{
+      padding: 0;
+      justify-self: center;
+    }
   }

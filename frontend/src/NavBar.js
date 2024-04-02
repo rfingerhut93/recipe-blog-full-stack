@@ -1,11 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { getAuth, signOut } from 'firebase/auth';
 import useUser from "./hooks/useUser";
 import "./navbar.css";
 import cupcakeLogo from "./assets/undraw_cupcake.svg"; // Adjust the path accordingly
+import HamburgerMenu from "./components/HamburgerMenu";
+import MenuItem from "./components/MenuItem";
 
 const NavBar = ({ clearQueryResults }) => {
     const navigate = useNavigate();
+    const [hamburgerOpen, setHamburgerOpen] = useState(false);
     const { user } = useUser();
 
     const handleRedirect = () => {
@@ -20,27 +24,40 @@ const NavBar = ({ clearQueryResults }) => {
         signOut(getAuth());
     }
 
+    const toggleHamburger = () => {
+        setHamburgerOpen(!hamburgerOpen);
+    }
+
     return (
-        <nav id="sidebar">
-            <div className="sidebar-logo">
-                <Link to="/" onClick={handleClick}>
-                    <img src={cupcakeLogo} alt="Cupcake Logo" />
-                </Link>
+        <nav className="navbar">
+            <div className="hamburger-container" onClick={toggleHamburger}>
+                <HamburgerMenu isOpen={hamburgerOpen}/>
             </div>
-            <ul>
-                {user && (
-                    <li className="nav-link">
-                        <Link className="link" to="/add-new-recipe">Add A Recipe</Link>
-                    </li>
+
+                {hamburgerOpen && (
+                    <div className="menu-items-container">
+                        <MenuItem
+                        user={user}
+                        handleLogout={handleLogout}
+                        handleRedirect={handleRedirect}
+                        isOpen={!hamburgerOpen}
+                    />    
+                    </div>
                 )}
-                <li className="nav-link">
-                    {user ? (
-                        <Link className="link" to="/" onClick={handleLogout}>Log Out</Link>
-                    ) : (
-                        <Link className="link" to="/log-in" onClick={handleRedirect}>Log In</Link>
-                    )}
-                </li>
-            </ul>
+
+            <div className={`sidebar ${hamburgerOpen ? 'hide' : ''}`}>
+                <div className="sidebar-logo">
+                    <Link to="/" onClick={handleClick}>
+                        <img src={cupcakeLogo} alt="Cupcake Logo" />
+                    </Link>
+                </div>
+                <MenuItem
+                    user={user}
+                    handleLogout={handleLogout}
+                    handleRedirect={handleRedirect}
+                    isOpen={hamburgerOpen}
+                />
+            </div>
         </nav>
     );
 }

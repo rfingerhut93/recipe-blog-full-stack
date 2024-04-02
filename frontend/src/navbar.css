@@ -1,51 +1,121 @@
 /* Sidebar Styles */
-#sidebar {
+.navbar{
+  background-color: white;
+}
+
+.sidebar {
   position: fixed;
   top: 0;
   left: 0;
-  width: 250px; /* Adjust as needed */
+  width: 250px; 
   height: 100%;
-  background-color: #FFFFFF; /* White background */
-  border-right: 1px solid rgba(0, 0, 0, 0.1); /* Subtle right border */
-  box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.1); /* Box shadow for a slight shadow effect */
-  z-index: 1000; /* Ensure sidebar is above other content */
+  background-color: #FFFFFF; 
+  border-right: 1px solid rgba(0, 0, 0, 0.1); 
+  box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000; 
+}
+
+.sidebar-hide{
+  display:none;
 }
 
 .sidebar-logo {
-  text-align: center; /* Center the logo horizontally */
-  padding: 2rem 0; /* Adjust the top padding to position the logo higher */
+  text-align: center; 
+  padding: 2rem 0; 
 }
 
 .sidebar-logo img {
-  max-width: 80%; /* Limit the width of the logo */
-  display: block; /* Ensure the logo is centered */
-  margin: 0 auto; /* Center the logo horizontally */
+  max-width: 80%; 
+  display: block; 
+  margin: 0 auto;
 }
 
-#sidebar ul {
+.sidebar ul, .menu-items-container ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
+
 .nav-link {
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 .link {
   display: block;
-  width: 100%; /* Ensure the buttons take the full width */
+  width: 100%;
   padding: 1rem;
   color: #000000; /* Black color */
   text-decoration: none;
-  font-family: 'Poppins', sans-serif; /* Use Poppins font */
-  font-weight: 500; /* Use a slightly bold font weight */
-  font-size: 1.4rem; /* Font size for links */
-  transition: background 0.3s, color 0.3s; /* Add transition for smoother color change */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 1.6rem;
+  transition: background 0.3s, color 0.3s; 
 }
 
 .link:hover {
   background: #66BB6A; /* Primary color background on hover */
   color: #FFFFFF; /* White text color on hover */
 }
+
+
+.hamburger-container {
+  display: none;
+  z-index: 6;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: white;
+}
+
+.menu-items-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white; 
+  z-index: 5; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.menu-item {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.menu-items-container ul{
+  width: 100%;
+  text-align: center;
+}
+
+
+@media (max-width: 767px) {
+  .hamburger-container {
+      display:block;      
+  }
+
+  .link:hover{
+    background: none;
+    color:inherit;
+  }
+
+  .sidebar{
+    display: none;
+  }
+  
+}
+
+/*height: 100%;
+      width: 100%;
+      top: 0;
+      right: 0;
+      background-color: white;*/

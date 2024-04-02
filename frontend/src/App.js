@@ -9,11 +9,11 @@ import { ProtectedRoute } from './components/ProtectedRoute';
 import useUser from './hooks/useUser';
 import NavBar from './NavBar';
 import { useState } from 'react';
+import HamburgerMenu from './components/HamburgerMenu';
 
 function App() {
   const {user, isLoading} = useUser();
 
-  // ADDED
   const [queryResults, setQueryResults] = useState([]);
   const [recipeName, setRecipeName] = useState('');
 
@@ -25,11 +25,13 @@ function App() {
   if (isLoading) {
     return (<h1>Loading...</h1>);
   }
+
+
   
   return (
     <BrowserRouter>
       <div className="App">
-      <NavBar clearQueryResults={clearQueryResults} />
+        <NavBar clearQueryResults={clearQueryResults} />
         <div id="page-body">
           <Routes>
             <Route path="/" element={<RecipeListPage setQueryResults={setQueryResults} queryResults={queryResults} recipeName={recipeName} setRecipeName={setRecipeName} />} />
